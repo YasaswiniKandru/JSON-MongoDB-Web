@@ -1,0 +1,43 @@
+<html>
+                <body>
+                <script src="./interests.js"></script>
+            <form name="myForm" action ="http://localhost:5000/webforms/insert" onsubmit= " return validation() " method ="POST"><label for=sno>Student Number:</label><input type=text  id=sno  name=sno  maxlength=9  size=9  required><br><label for=firstname>First Name:</label><input type=text  id=firstname  name=firstname  maxlength=50  size=20  required><br><label for=lastname>Last Name:</label><input type=text  id=lastname  name=lastname  maxlength=50  size=20  required><br><p>Check classes you are enrolled in:</p><label for=courses>CSc 2310</label><input type=checkbox  id=courses  name=courses value=2310  checked><br><label for=courses>CSc 4710</label><input type=checkbox  id=courses  name=courses value=4710><br><label for=courses>CSc 8710</label><input type=checkbox  id=courses  name=courses value=8710><br><br><label for=status>What is your residence status?</label><select name=status id=status><option value=on-campus>On-Campus</option><option value=off-campus>Off-Campus</option></select><p>Choose a semester:</p><label for=semester>Spring</label><input type=radio  id=semester  name=semester value=spring><br><label for=semester>Summer</label><input type=radio  id=semester  name=semester value=summer><br><label for=semester>Fall</label><input type=radio  id=semester  name=semester value=fall><br><br><input type=submit  value=submit>   <br><input type=reset  value=reset>   <script>function validation() {
+var sno = document.getElementById("sno").value.trim();
+var firstname = document.getElementById("firstname").value.trim();
+var lastname = document.getElementById("lastname").value.trim();
+var courses = [];
+var checkbox = document.querySelectorAll('input[name="courses"]:checked');checkbox.forEach((checkbox) => { courses.push(checkbox.value); });
+var status = document.querySelector("#status").value;
+error = " ";
+if (sno == "" ) {
+alert( "Please fill  Student Number: ") 
+   }
+var numbers = /^[0-9]+$/;
+ if (!sno.match(numbers)){
+alert( "Student Number: must be Integer");}
+if (firstname == "" ) {
+alert( "Please fill  First Name: ") 
+   }
+var numbers = /^[a-z]+$/;
+ if (!firstname.match(numbers)){
+alert("First Name: must be String");}
+if (lastname == "" ) {
+alert( "Please fill  Last Name: ") 
+   }
+var numbers = /^[a-z]+$/;
+ if (!lastname.match(numbers)){
+alert("Last Name: must be String");}
+var numbers = /^[a-z]+$/;
+ if (!courses.match(numbers)){
+alert("Check classes you are enrolled in: must be String");}
+var numbers = /^[a-z]+$/;
+ if (!status.match(numbers)){
+alert("What is your residence status? must be String");}
+var numbers = /^[a-z]+$/;
+ if (!semester.match(numbers)){
+alert("Choose a semester: must be String");}
+
+} </script>
+    </form>
+    </body>
+    </html>
